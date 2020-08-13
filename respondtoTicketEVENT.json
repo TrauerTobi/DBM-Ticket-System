@@ -5,7 +5,7 @@
   "_id": "FgxOz",
   "actions": [
     {
-      "code": "if(msg.channel.parentID == \"TICKET CATEGORY ID HERE\") {\nconst userid = msg.channel.name;\nconst u = client.users.find(user => user.id == userid);\nu.send(\"**\" + msg.author.tag + \"**\" + \": \" + msg.content)\n}\n",
+      "code": "if(msg.channel.parentID == \"TICKET CATEGORY ID HERE\") {\nconst userid = msg.channel.name;\nconst u = client.users.cache.find(user => user.id == userid);\nu.send(\"**\" + msg.author.tag + \"**\" + \": \" + msg.content)\n}\n",
       "behavior": "0",
       "interpretation": "0",
       "storage": "0",
@@ -15,7 +15,7 @@
       "name": "Run Script"
     },
     {
-      "code": "    if(msg.attachments.size > 0 && msg.channel.type == \"text\") {\n        const u = client.users.find(user => user.id === msg.channel.name);\n        msg.attachments.forEach(function(attachment) {\n            u.send(attachment.url);\n        });\n    }\n    \n    else if(msg.attachments.size > 0 && msg.channel.type == \"dm\") {\n        const channelToGet = client.channels.find(channel => channel.name == msg.author.id)\n        msg.attachments.forEach(function(attachment) {\n            channelToGet.send(attachment.url);\n        });\n    }\n    \n    else {\n        console.log(\"No attachments\")\n    }",
+      "code": "    if(msg.attachments.size > 0 && msg.channel.type == \"text\") {\n        const u = client.users.cache.find(user => user.id === msg.channel.name);\n        msg.attachments.forEach(function(attachment) {\n            u.send(attachment.url);\n        });\n    }\n    \n    else if(msg.attachments.size > 0 && msg.channel.type == \"dm\") {\n        const channelToGet = client.channels.cache.find(channel => channel.name == msg.author.id)\n        msg.attachments.forEach(function(attachment) {\n            channelToGet.send(attachment.url);\n        });\n    }\n    \n    else {\n        Actions.callNextAction(cache)\n    }",
       "behavior": "0",
       "interpretation": "0",
       "storage": "0",
